@@ -1,0 +1,48 @@
+---
+#
+# EECS 4287/5287: Principles of Cloud Computing
+# Author: Aniruddha Gokhale
+# Created: Fall 2017
+# Modified: Fall 2020
+#
+# This playbook is our demo master file
+# The goal is to show how to have a single master file which then
+# includes multiple plays according to some well-designed choreography
+#
+# This file is similar to the one in the AnsibleOnly_Local_and_Cloud folder
+# For now I just kept one play in here but feel free to add more.
+#####################################################
+### Play 1: Get facts from all our VMs
+#
+# Here I show the use of import_tasks from child playbooks
+#####################################################
+# - name: "Play 1: Perform fact gathering on VMs"
+#   import_playbook: tasks/playbook_exec_app_on_cloud_vm.yml
+
+# - name: "Download ansible galaxy"
+#   import_playbook: tasks/install_ansible_galaxy_local.yml
+
+- name: "Create cloud vms"
+  import_playbook: tasks/create_cloud_vms.yml
+
+# - name: "Download Kafka"
+#   import_playbook: tasks/download_kafka.yml
+#
+# - name: "Download Required Libraries"
+#   import_playbook: tasks/download_java_python_kafka.yml
+#
+# - name: "Copy config files and consumer code to vm2"
+#   import_playbook: tasks/copy_config_files_consumer_vm2.yml
+#
+# - name: "Copy kafka config file to vm3"
+#   import_playbook: tasks/copy_config_files_vm3.yml
+#
+# - name: "Start zookeeper on vm2"
+#   import_playbook: tasks/start_zookeeper.yml
+#
+# - name: "Start kafka broker on both VMs"
+#   import_playbook: tasks/start_kafka_both_cloud.yml
+#
+# - name: "Start consumer code on vm2"
+#   import_playbook: tasks/start_consumer.yml
+...

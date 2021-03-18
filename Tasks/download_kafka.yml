@@ -1,0 +1,23 @@
+---
+
+- hosts: MyChameleonVMs
+  remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
+
+  tasks:
+  - name: Download tar file
+    command: wget https://mirror.jframeworks.com/apache/kafka/2.7.0/kafka_2.13-2.7.0.tgz -P ~
+    register: output
+
+  - name: Make directory
+    command: sudo mkdir /opt/Kafka
+
+  - name: Extract file
+    command: sudo tar -xvzf ~/kafka_2.13-2.7.0.tgz -C /opt/Kafka
+
+  - name: Print the output
+    debug:
+      msg: "{{ output }}"
+
+...

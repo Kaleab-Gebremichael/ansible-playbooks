@@ -1,0 +1,38 @@
+---
+
+- hosts: MyLocalVMs
+
+  tasks:
+
+  - name: D1
+    command: sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+
+  - name: D2
+    command: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+
+  - name: D3
+    command: sudo update-alternatives --set python /usr/bin/python3.6
+
+  - name: Update Repos
+    command: sudo apt update
+
+  - name: Download pip3
+    command: sudo apt install python3-pip -y
+
+  - name: Download ansible-galaxy
+    command: ansible-galaxy collection install openstack.cloud
+    register: output
+  # - name: Update openstacksdk
+  #   command: sudo apt-get install -y python-openstacksdk
+  #   register: output
+
+  - name: upgrade openstack
+    command: pip3 install --upgrade openstacksdk
+
+
+  - name: Print the output
+    debug:
+      msg: "{{ output }}"
+
+
+...

@@ -1,0 +1,18 @@
+---
+
+- hosts: VM2
+  remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
+
+  tasks:
+  - name: Run consumer.py
+    command: python3 ~/consumer.py
+    register: output
+
+  - name: Print the output
+    debug:
+      msg: "{{ output }}"
+
+
+...

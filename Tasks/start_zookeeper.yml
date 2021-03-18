@@ -1,0 +1,26 @@
+---
+
+- hosts: VM2
+  remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
+
+  tasks:
+  # - name: Change into kafka directory
+  #   command: cd /opt/Kafka/kafka_2.13-2.7.0/
+
+  - name: Start zookeeper
+    command: chdir=/opt/Kafka/kafka_2.13-2.7.0 sudo bin/zookeeper-server-start.sh config/zookeeper.properties
+    async: 20
+    poll: 0
+    register: output
+
+  - name: Print the output
+    debug:
+      msg: "{{ output }}"
+  # - name: Check if successful
+  #   async_status: jid="{{ output.ansible_job_id }}"
+  #   register: result
+  #   failed_when: result.finished != 0 or "Finished 'command'" not in result.stdout
+
+...

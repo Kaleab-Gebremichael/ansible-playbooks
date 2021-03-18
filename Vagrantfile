@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   # config.vm.box = "base"
-  config.vm.box = "ubuntu/bionic64"   # Ubuntu 18.04 (use focal64 for 20.04)
+  config.vm.box = "ubuntu/focal64"   # Ubuntu 18.04 (use focal64 for 20.04)
    
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -128,12 +128,12 @@ Vagrant.configure("2") do |config|
   # installed openstacksdk and ansible galaxy plugin. All those steps
   # are left for you to fill up
   config.vm.provision "ansible_local" do |ansible|
-    ansible.playbook = "playbook_demo_master.yml"
+    ansible.galaxy_role_file = "requirements.yml"
+    ansible.galaxy_command = "ansible-galaxy collection install -r %{role_file}"
     ansible.verbose = true
     ansible.install = true  # installs ansible (and hence python on VM)
     ansible.limit = "all"
     ansible.inventory_path = "MyInventory"  # inventory file
-    ansible.galaxy_role_file = "requirements.yml"
-    ansible.galaxy_command = "ansible-galaxy collection install -r %{role_file}"
+    ansible.playbook = "playbook_demo_master.yml"
   end
 end

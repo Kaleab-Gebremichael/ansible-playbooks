@@ -22,8 +22,8 @@
 # - name: "Download ansible galaxy"
 #   import_playbook: tasks/install_ansible_galaxy_local.yml
 
-- name: "Create cloud vms"
-  import_playbook: tasks/create_cloud_vms.yml
+ - name: "Create cloud vms"
+   import_playbook: tasks/create_cloud_vms.yml
 
 # - name: "Download Kafka"
 #   import_playbook: tasks/download_kafka.yml

@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   # config.vm.box = "base"
-  config.vm.box = "ubuntu/focal64"   # Ubuntu 18.04 (use focal64 for 20.04)
+  config.vm.box = "ubuntu/bionic64"   # Ubuntu 18.04 (use focal64 for 20.04)
    
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

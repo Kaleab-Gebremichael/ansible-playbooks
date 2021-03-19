@@ -6,8 +6,15 @@
     - openstack.cloud
 
   tasks:
+
+  - name: Download kafka-python
+    command: pip3 install kafka-python
+
+  - name: Download couchdb
+    command: pip3 install couchdb
+
   - name: Run consumer.py
-    command: python3 ~/consumer.py
+    command: python3 /opt/consumer.py
     register: output
 
   - name: Print the output

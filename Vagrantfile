@@ -13,8 +13,8 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   # config.vm.box = "base"
-  config.vm.box = "ubuntu/bionic64"   # Ubuntu 18.04 (use focal64 for 20.04)
-   
+  config.vm.box = "ubuntu/focal64"   # Ubuntu 18.04 (use focal64 for 20.04)
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -87,7 +87,7 @@ Vagrant.configure("2") do |config|
   # The shell provisioner can also accept a script that will be executed in
   # the guest in user mode (by default). See the bootstrap.sh script
   # where we create the above directories and they all will execute
-  # as the user "vagrant" by default 
+  # as the user "vagrant" by default
   config.vm.provision "shell", path: "bootstrap.sh"
 
   # let's copy our pem file to the vagrant created guest. Change the file name
@@ -107,7 +107,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "Files/server2.properties", destination: "~/.ansible/server2.properties"
   config.vm.provision "file", source: "Files/server3.properties", destination: "~/.ansible/server3.properties"
   config.vm.provision "file", source: "Files/zookeeper.properties", destination: "~/.ansible/zookeeper.properties"
-  
+  config.vm.provision "file", source: "Files/producer.py", destination: "~/.ansible/producer.py"
+  config.vm.provision "file", source: "Files/install_couchdb.sh", destination: "~/.ansible/install_couchdb.sh"
+
 
   # We now use the Ansible provisioner
   #

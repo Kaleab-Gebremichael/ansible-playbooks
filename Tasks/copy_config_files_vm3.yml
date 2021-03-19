@@ -6,9 +6,8 @@
     - openstack.cloud
 
   tasks:
-  - name: Copy server.properties
-    ansible.builtin.copy:
-      src: ~/.ansible/server3.properties
-      dest: /opt/Kafka/kafka_2.13-2.7.0/config/server.properties
+  - name: Copy server3.properties
+    copy: src=~/.ansible/server3.properties dest=/opt/Kafka/kafka_2.13-2.7.0/config/server.properties
+    become: true
 
 ...

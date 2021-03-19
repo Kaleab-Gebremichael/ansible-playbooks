@@ -17,9 +17,6 @@
   - name: Download pip3
     command: sudo apt install python3-pip -y
 
-  - name: Download kafka-python
-    command: pip3 install kafka-python
-
   - name: Print the output
     debug:
       msg: "{{ output }}"

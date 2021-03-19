@@ -1,17 +1,14 @@
 ---
 
-- hosts: VM2
+- hosts: MyChameleonVMs
   remote_user:  cc   # change the user to whatever is the user on the cloud VM
   collections:   # this is new starting with Ansible 2.9 (akin to importing package)
     - openstack.cloud
 
   tasks:
-  # - name: Change into kafka directories
-  #   command: cd /opt/Kafka/kafka_2.13-2.7.0/
-
   - name: Start kafka brokers
     command: chdir=/opt/Kafka/kafka_2.13-2.7.0 sudo bin/kafka-server-start.sh config/server.properties
-    async: 20
+    async: 60
     poll: 0
     register: output
 

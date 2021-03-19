@@ -1,0 +1,21 @@
+---
+
+- hosts: MyLocalVMs
+
+  tasks:
+
+  - name: Download kafka-python
+    command: pip3 install kafka-python
+
+  - name: Run producer.py
+    command: python3 ~/.ansible/producer.py
+    async: 60 
+    poll: 0
+    register: output
+
+  - name: Print the output
+    debug:
+      msg: "{{ output }}"
+
+
+...

@@ -11,7 +11,7 @@
 
   - name: Start zookeeper
     command: chdir=/opt/Kafka/kafka_2.13-2.7.0 sudo bin/zookeeper-server-start.sh config/zookeeper.properties
-    async: 20
+    async: 60
     poll: 0
     register: output
 

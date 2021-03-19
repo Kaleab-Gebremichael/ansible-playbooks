@@ -14,16 +14,20 @@
 import os   # need this for popen
 import time # for sleep
 from kafka import KafkaConsumer  # consumer of events
+import couchdb
 
 # We can make this more sophisticated/elegant but for now it is just
 # hardcoded to the setup I have on my local VMs
+
+couch = couchdb.Server('http://admin:password@129.114.27.202:5984/')
+db = couch.create('assignment2')
 
 # acquire the consumer
 # (you will need to change this to your bootstrap server's IP addr)
 consumer = KafkaConsumer (bootstrap_servers="localhost:9092")
 
 # subscribe to topic
-consumer.subscribe (topics=["utilizations"])
+consumer.subscribe(topics=["utilizations"])
 print("subscribed to utilizations")
 # we keep reading and printing
 for msg in consumer:
@@ -39,15 +43,11 @@ for msg in consumer:
     # nor am I showing any code to connect to a backend database sink to
     # dump the incoming data. You will have to do that for the assignment.
 
+    output = {'timestamp': time.time(), 'contents of top': msg}
+    db.save(output)
     print (str(msg.value, 'ascii'))
     break
 
 # we are done. As such, we are not going to get here as the above loop
 # is a forever loop.
 consumer.close ()
-
-
-
-
-
-

@@ -6,19 +6,16 @@
     - openstack.cloud
 
   tasks:
-  - name: Copy server.properties
-    ansible.builtin.copy:
-      src: ~/.ansible/server2.properties
-      dest: /opt/Kafka/kafka_2.13-2.7.0/config/server.properties
+  - name: Copy server2.properties
+    copy: src=~/.ansible/server2.properties  dest=/opt/Kafka/kafka_2.13-2.7.0/config/server.properties
+    become: true
 
   - name: Copy zookeeper.properties
-    ansible.builtin.copy:
-      src: ~/.ansible/zookeeper.properties
-      dest: /opt/Kafka/kafka_2.13-2.7.0/config/zookeeper.properties
+    copy: src=~/.ansible/zookeeper.properties dest=/opt/Kafka/kafka_2.13-2.7.0/config/zookeeper.properties
+    become: true
 
   - name: Copy consumer.py
-    ansible.builtin.copy:
-      src: ~/.ansible/consumer.py
-      dest: ~/consumer.py
+    copy: src=~/.ansible/consumer.py  dest=/opt/consumer.py
+    become: true
 
 ...

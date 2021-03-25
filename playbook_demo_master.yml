@@ -49,5 +49,7 @@
 
 - name: "Start consumer code on vm2"
   import_playbook: tasks/start_consumer.yml
-
+  
+- name: "Delete cloud vms"
+  import_playbook: tasks/delete_cloud_vms.yml
 ...

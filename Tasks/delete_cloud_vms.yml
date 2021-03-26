@@ -3,6 +3,12 @@
 - name: Delete a cloud vm
   hosts: MyLocalVMs
   tasks:
+  
+    - name: siesta while consumer runs
+      command: /bin/sleep 60
+      async: 70
+      poll: 20
+  
     - name: delete vm2 instance
       openstack.cloud.server:
         name: team5_vm_2
@@ -42,8 +48,5 @@
         floating_ips:
           - 129.114.27.202
 
-#    - name: go to bed
-#      command: /bin/sleep 60
-#      async: 70
-#      poll: 20
+
 ...

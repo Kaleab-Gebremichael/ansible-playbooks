@@ -20,7 +20,10 @@ import couchdb
 # hardcoded to the setup I have on my local VMs
 
 couch = couchdb.Server('http://admin:password@129.114.27.202:5984/')
-db = couch.create('assignment2')
+try:
+    db = couch.create('assignment2')
+except:
+    db = couch['assignment2']
 
 # acquire the consumer
 # (you will need to change this to your bootstrap server's IP addr)
@@ -46,7 +49,6 @@ for msg in consumer:
     output = {'timestamp': time.time(), 'contents of top': msg}
     db.save(output)
     print (str(msg.value, 'ascii'))
-    break
 
 # we are done. As such, we are not going to get here as the above loop
 # is a forever loop.

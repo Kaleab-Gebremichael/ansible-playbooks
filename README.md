@@ -9,9 +9,9 @@ The data is viewable in the couchdb web console.
 To run: 
 
 1. vagrant up
-2. vagrant provision
-3. vagrant destroy
+2. vagrant destroy
 
+to view data output to couchdb: http://129.114.27.202:5984/_utils/index.html
 
 Summary of files:
 

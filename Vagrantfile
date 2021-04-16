@@ -109,6 +109,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "Files/zookeeper.properties", destination: "~/.ansible/zookeeper.properties"
   config.vm.provision "file", source: "Files/producer.py", destination: "~/.ansible/producer.py"
   config.vm.provision "file", source: "Files/install_couchdb.sh", destination: "~/.ansible/install_couchdb.sh"
+  config.vm.provision "file", source: "Files/install_docker_kubernetes.sh", destination: "~/.ansible/install_docker_kubernetes.sh"
 
 
   # We now use the Ansible provisioner

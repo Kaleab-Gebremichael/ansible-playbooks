@@ -7,7 +7,7 @@
 
   tasks:
   - name: Download tar file
-    command: wget https://mirror.jframeworks.com/apache/kafka/2.7.0/kafka_2.13-2.7.0.tgz -P ~
+    command: wget https://mirrors.ocf.berkeley.edu/apache/kafka/2.7.0/kafka_2.13-2.7.0.tgz -P ~
     register: output
 
   - name: Make directory

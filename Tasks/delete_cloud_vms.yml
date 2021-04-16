@@ -3,12 +3,12 @@
 - name: Delete a cloud vm
   hosts: MyLocalVMs
   tasks:
-  
+
     - name: siesta while consumer runs
       command: /bin/sleep 60
       async: 70
       poll: 20
-  
+
     - name: delete vm2 instance
       openstack.cloud.server:
         name: team5_vm_2
@@ -21,8 +21,8 @@
         availability_zone: nova
         image: CC-Ubuntu20.04
         key_name: gebremks_chameleon
-        flavor: m1.small
-        security_groups: "667273fd-a67a-4ca2-8a68-3088220e6374,7e09e9fd-4971-49bb-bd55-9aa2fa149b16,ENABLE_SSH,ENABLE_KAFKA_COUCHDB,ENABLE_FECBENCH,ENABLE_COUCHDB_PORT,ENABLE_HTTP_HTTPS"
+        flavor: m1.medium
+        security_groups: "667273fd-a67a-4ca2-8a68-3088220e6374,7e09e9fd-4971-49bb-bd55-9aa2fa149b16,ENABLE_SSH,ENABLE_KAFKA_COUCHDB,ENABLE_FECBENCH,ENABLE_COUCHDB_PORT,ENABLE_HTTP_HTTPS,ENABLE_ZMQ_APPS,ENABLE_K8S"
         nics:
           - net-id: 4b484898-92b4-4a4b-9c5d-7d55bd72f1ee
         floating_ips:
@@ -42,7 +42,7 @@
         image: CC-Ubuntu20.04
         key_name: gebremks_chameleon
         flavor: m1.small
-        security_groups: "667273fd-a67a-4ca2-8a68-3088220e6374,7e09e9fd-4971-49bb-bd55-9aa2fa149b16,ENABLE_SSH,ENABLE_KAFKA_COUCHDB,ENABLE_FECBENCH,ENABLE_COUCHDB_PORT,ENABLE_HTTP_HTTPS"
+        security_groups: "667273fd-a67a-4ca2-8a68-3088220e6374,7e09e9fd-4971-49bb-bd55-9aa2fa149b16,ENABLE_SSH,ENABLE_KAFKA_COUCHDB,ENABLE_FECBENCH,ENABLE_COUCHDB_PORT,ENABLE_HTTP_HTTPS,ENABLE_ZMQ_APPS,ENABLE_K8S"
         nics:
           - net-id: 4b484898-92b4-4a4b-9c5d-7d55bd72f1ee
         floating_ips:

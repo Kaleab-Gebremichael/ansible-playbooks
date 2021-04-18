@@ -19,5 +19,5 @@ spec:
       protocol: TCP     # this is default (so not needed either)
       port: 5984   # the port used by the server inside the pod/container
       targetPort: 5984   # not sure if we need this because if not specified, it is same as port
-      nodePort: 30001  # this is what will be externally published
+      nodePort: 30003  # this is what will be externally published
 ...

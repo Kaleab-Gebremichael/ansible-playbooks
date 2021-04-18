@@ -23,12 +23,12 @@ from kafka import KafkaProducer  # producer of events
 
 # acquire the producer
 # (you will need to change this to your bootstrap server's IP addr)
-producer = KafkaProducer (bootstrap_servers="129.114.25.102:9092", 
+producer = KafkaProducer (bootstrap_servers="129.114.25.102:30000", 
                                           acks=1)  # wait for leader to write to log
 
 # say we send the contents 100 times after a sleep of 1 sec in between
 for i in range (100):
-    
+
     # get the output of the top command
     process = os.popen ("top -n 1 -b")
 
@@ -51,10 +51,3 @@ for i in range (100):
 
 # we are done
 producer.close ()
-    
-
-
-
-
-
-

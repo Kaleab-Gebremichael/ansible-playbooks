@@ -1,17 +1,14 @@
 ---
 
-- hosts: MyChameleonVMs
+- hosts: VM2
   remote_user:  cc   # change the user to whatever is the user on the cloud VM
   collections:   # this is new starting with Ansible 2.9 (akin to importing package)
     - openstack.cloud
 
   tasks:
-  - name: Copy shell file
-    copy: src=~/.ansible/install_docker_kubernetes.sh dest=/opt/install_docker_kubernetes.sh
-    become: true
 
-  - name: Run shell command to install docker/kubernetes
-    command: sh /opt/install_docker_kubernetes.sh
+  - name: Run shell command to start deployments and services
+    command: sh ~/start_deployments_services.sh
     become: true
     register: output
 

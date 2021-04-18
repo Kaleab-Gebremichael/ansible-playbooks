@@ -1,0 +1,14 @@
+FROM ubuntu:latest
+#
+# Now install the needed python packages
+RUN apt-get update
+RUN apt-get install -y python3 gnupg ca-certificates
+
+RUN echo "deb https://apache.bintray.com/couchdb-deb focal main" | tee -a /etc/apt/sources.list
+
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
+RUN apt update
+
+RUN apt-get install -y --force-yes couchdb
+
+COPY local.ini /opt/couchdb/etc/

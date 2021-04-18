@@ -9,11 +9,6 @@ RUN sudo mkdir Kafka
 RUN sudo tar -xvzf ~/kafka_2.13-2.7.0.tgz -C Kafka/
 
 
-#install install_couchdb
-
-COPY install_couchdb.sh /
-RUN sudo sh install_couchdb.sh
-
 COPY server2.properties /
 COPY server3.properties /
 COPY zookeeper.properties /

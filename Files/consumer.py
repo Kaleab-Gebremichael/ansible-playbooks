@@ -19,15 +19,15 @@ import couchdb
 # We can make this more sophisticated/elegant but for now it is just
 # hardcoded to the setup I have on my local VMs
 
-couch = couchdb.Server('http://admin:password@129.114.27.202:5984/')
+couch = couchdb.Server('http://admin:password@129.114.27.202:30003/')
 try:
-    db = couch.create('assignment2')
+    db = couch.create('assignment3')
 except:
-    db = couch['assignment2']
+    db = couch['assignment3']
 
 # acquire the consumer
 # (you will need to change this to your bootstrap server's IP addr)
-consumer = KafkaConsumer (bootstrap_servers="localhost:9092")
+consumer = KafkaConsumer (bootstrap_servers="129.114.25.102:30000")
 
 # subscribe to topic
 consumer.subscribe(topics=["utilizations"])

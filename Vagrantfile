@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   # config.vm.box = "base"
-  config.vm.box = "ubuntu/focal64"   # Ubuntu 18.04 (use focal64 for 20.04)
+  config.vm.box = "ubuntu/focal64"   # Ubuntu 20.04 (use focal64 for 20.04)
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -107,10 +107,23 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "Files/server2.properties", destination: "~/.ansible/server2.properties"
   config.vm.provision "file", source: "Files/server3.properties", destination: "~/.ansible/server3.properties"
   config.vm.provision "file", source: "Files/zookeeper.properties", destination: "~/.ansible/zookeeper.properties"
-  config.vm.provision "file", source: "Files/producer.py", destination: "~/.ansible/producer.py"
-  config.vm.provision "file", source: "Files/install_couchdb.sh", destination: "~/.ansible/install_couchdb.sh"
+  config.vm.provision "file", source: "Files/consumer.py", destination: "~/.ansible/consumer.py"
+  config.vm.provision "file", source: "Files/local.ini", destination: "~/.ansible/local.ini"
+  config.vm.provision "file", source: "Files/docker_kubernetes_commands.sh", destination: "~/.ansible/docker_kubernetes_commands.sh"
   config.vm.provision "file", source: "Files/install_docker_kubernetes.sh", destination: "~/.ansible/install_docker_kubernetes.sh"
-
+  config.vm.provision "file", source: "Files/start_deployments_services.sh", destination: "~/.ansible/start_deployments_services.sh"
+  config.vm.provision "file", source: "DockerKubernetesFiles/consumer_deployment.yaml", destination: "~/.ansible/consumer_deployment.yaml"
+  config.vm.provision "file", source: "DockerKubernetesFiles/consumer_docker", destination: "~/.ansible/consumer_docker"
+  config.vm.provision "file", source: "DockerKubernetesFiles/couchdb_deployment.yaml", destination: "~/.ansible/couchdb_deployment.yaml"
+  config.vm.provision "file", source: "DockerKubernetesFiles/couchdb_service.yaml", destination: "~/.ansible/couchdb_service.yaml"
+  config.vm.provision "file", source: "DockerKubernetesFiles/just_couchdb_docker", destination: "~/.ansible/just_couchdb_docker"
+  config.vm.provision "file", source: "DockerKubernetesFiles/kafka_broker0_deployment.yaml", destination: "~/.ansible/kafka_broker0_deployment.yaml"
+  config.vm.provision "file", source: "DockerKubernetesFiles/kafka_broker0_service.yaml", destination: "~/.ansible/kafka_broker0_service.yaml"
+  config.vm.provision "file", source: "DockerKubernetesFiles/kafka_broker1_deployment.yaml", destination: "~/.ansible/kafka_broker1_deployment.yaml"
+  config.vm.provision "file", source: "DockerKubernetesFiles/kafka_broker1_service.yaml", destination: "~/.ansible/kafka_broker1_service.yaml"
+  config.vm.provision "file", source: "DockerKubernetesFiles/kafka_couchdb_docker", destination: "~/.ansible/kafka_couchdb_docker"
+  config.vm.provision "file", source: "DockerKubernetesFiles/zookeeper_deployment.yaml", destination: "~/.ansible/zookeeper_deployment.yaml"
+  config.vm.provision "file", source: "DockerKubernetesFiles/zookeeper_service.yaml", destination: "~/.ansible/zookeeper_service.yaml"
 
   # We now use the Ansible provisioner
   #

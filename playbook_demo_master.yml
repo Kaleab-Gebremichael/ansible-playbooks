@@ -17,12 +17,29 @@
 # Here I show the use of import_tasks from child playbooks
 #####################################################
 
-- name: "Create cloud vms"
-  import_playbook: tasks/create_cloud_vms.yml
+# - name: "Create cloud vms"
+#   import_playbook: tasks/create_cloud_vms.yml
 
 - name: "Install docker"
   import_playbook: tasks/install_docker.yml
 
+- name: "Enable ufw ports"
+  import_playbook: tasks/enable_ufw_ports.yml
+
+- name: "Start cluster"
+  import_playbook: tasks/start_kubernetes_cluster.yml
+
+- name: "Taint master and compile docker files"
+  import_playbook: tasks/taint_master_compile_dockerfiles.yml
+
+- name: "Join cluster from VM3"
+  import_playbook: tasks/join_cluster_vm3.yml
+
+- name: "Copy kubernetes deployment and service files"
+  import_playbook: tasks/copy_kubernetes_deployment_files.yml
+
+- name: "Start deployments and services"
+  import_playbook: tasks/start_deployments_services.yml
 # - name: "Download Kafka"
 #   import_playbook: tasks/download_kafka.yml
 #
@@ -35,8 +52,6 @@
 # - name: "Copy kafka config file to vm3"
 #   import_playbook: tasks/copy_config_files_vm3.yml
 #
-# - name: "Enable ufw ports"
-#   import_playbook: tasks/enable_ufw_ports.yml
 #
 # - name: "Start zookeeper on vm2"
 #   import_playbook: tasks/start_zookeeper.yml

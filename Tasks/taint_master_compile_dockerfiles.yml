@@ -1,0 +1,56 @@
+---
+
+- hosts: VM2
+  remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
+
+  tasks:
+
+  - name: Copy shell file
+    copy: src=~/.ansible/docker_kubernetes_commands.sh dest=~/docker_kubernetes_commands.sh
+    become: true
+
+  - name: Copy docker file1
+    copy: src=~/.ansible/consumer_docker dest=~/consumer_docker
+    become: true
+
+  - name: Copy docker file2
+    copy: src=~/.ansible/kafka_couchdb_docker dest=~/kafka_couchdb_docker
+    become: true
+
+  - name: Copy docker file3
+    copy: src=~/.ansible/just_couchdb_docker dest=~/just_couchdb_docker
+    become: true
+
+  - name: Copy server2.properties
+    copy: src=~/.ansible/server2.properties dest=~/server2.properties
+    become: true
+
+  - name: Copy server3.properties
+    copy: src=~/.ansible/server3.properties dest=~/server3.properties
+    become: true
+
+  - name: Copy zookeeper.properties
+    copy: src=~/.ansible/zookeeper.properties dest=~/zookeeper.properties
+    become: true
+
+  - name: Copy consumer.py
+    copy: src=~/.ansible/consumer.py dest=~/consumer.py
+    become: true
+
+  - name: Copy local.ini
+    copy: src=~/.ansible/local.ini dest=~/local.ini
+    become: true
+
+  - name: Run non-interactive shell command to start cluster and tainting
+    command: sh ~/docker_kubernetes_commands.sh
+    become: true
+    register: output
+
+  - name: Print the output
+    debug:
+      msg: "{{ output }}"
+
+
+...

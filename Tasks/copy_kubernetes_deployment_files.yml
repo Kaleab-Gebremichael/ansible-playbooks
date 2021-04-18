@@ -1,0 +1,51 @@
+---
+
+- hosts: VM2
+  remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
+
+  tasks:
+
+  - name: Copy docker file1
+    copy: src=~/.ansible/zookeeper_service.yaml dest=~/zookeeper_service.yaml
+    become: true
+
+  - name: Copy docker file2
+    copy: src=~/.ansible/zookeeper_deployment.yaml dest=~/zookeeper_deployment.yaml
+    become: true
+
+  - name: Copy shell file3
+    copy: src=~/.ansible/kafka_broker0_service.yaml dest=~/kafka_broker0_service.yaml
+    become: true
+
+  - name: Copy shell file4
+    copy: src=~/.ansible/kafka_broker0_deployment.yaml dest=~/kafka_broker0_deployment.yaml
+    become: true
+
+  - name: Copy shell file5
+    copy: src=~/.ansible/kafka_broker1_service.yaml dest=~/kafka_broker1_service.yaml
+    become: true
+
+  - name: Copy shell file6
+    copy: src=~/.ansible/kafka_broker1_deployment.yaml dest=~/kafka_broker1_deployment.yaml
+    become: true
+
+  - name: Copy shell file7
+    copy: src=~/.ansible/couchdb_service.yaml dest=~/couchdb_service.yaml
+    become: true
+
+  - name: Copy shell file8
+    copy: src=~/.ansible/couchdb_deployment.yaml dest=~/couchdb_deployment.yaml
+    become: true
+
+  - name: Copy shell file9
+    copy: src=~/.ansible/consumer_deployment.yaml dest=~/consumer_deployment.yaml
+    become: true
+
+  - name: Copy non-interactive shell for deploying services
+    copy: src=~/.ansible/start_deployments_services.sh dest=~/start_deployments_services.sh
+    become: true
+
+
+...

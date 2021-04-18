@@ -11,15 +11,15 @@ spec:                     # This is the specification where we can even put the 
         app: couchdb        # some label to give to this pod (see the matching label above)
     spec:                 # actual specification
       nodeSelector:
-        kubernetes.io/hostname: team5_vm_3
+        kubernetes.io/hostname: team5-vm-3
       containers:
       - name: couchdb       # this is going to be used for DNS name
         # Change the IP address to where you are running this
-        image: 129.114.25.102:5000/kafka-couchdb   # this is the image in registry accessible
+        image: 129.114.25.102:5000/just-couchdb   # this is the image in registry accessible
                                              # from all our workers
         imagePullPolicy: Always  # This forces the node to pull the image
-        command: ["which"]
-        args: ["couchdb"]  # arguments to run. I am running this for 1000
+        command: ["service couchdb start"]
+        args: [""]  # arguments to run. I am running this for 1000
                                                                                                        # iterations so that we have time to do an exec
                                                                                                        # and open a shell to the running pod
       restartPolicy: Never  # we ask Kubernetes not to restart

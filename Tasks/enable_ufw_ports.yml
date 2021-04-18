@@ -6,8 +6,6 @@
     - openstack.cloud
 
   tasks:
-  # - name: Enable Ufw
-  #   command: sudo ufw enable
 
   - name: Allow port 9092
     command: sudo ufw allow 9092
@@ -18,6 +16,29 @@
   - name: Allow port 5984
     command: sudo ufw allow 5984
 
+  - name: Allow port 2379:2380/tcp
+    command: sudo ufw allow 2379:2380/tcp
 
+  - name: Allow port 6443/tcp
+    command: sudo ufw allow 6443/tcp
 
-...
+  - name: Allow port 10250:10252/tcp
+    command: sudo ufw 10250:10252/tcp
+
+  - name: Allow port 8285/udp
+    command: sudo ufw allow 8285/udp
+
+  - name: Allow port 8472/udp
+    command: sudo ufw allow 8472/udp
+
+  - name: Allow port 5000/tcp
+    command: sudo ufw allow 5000/tcp
+
+  - name: Allow port 30000:30004/tcp
+    command: sudo ufw allow 30000:30004/tcp
+
+  - name: Allow port 30005/tcp
+    command: sudo ufw allow 30005/tcp
+
+  - name: Allow port 30006
+    command: sudo ufw allow 30006/tcp

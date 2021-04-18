@@ -1,0 +1,20 @@
+---
+
+- hosts: VM2
+  remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
+
+  tasks:
+
+  - name: Start kubeadm cluster
+    command: sudo kubeadm init --node-name kubemaster -pod-network-cidr=10.244.0.0/16
+
+    ### FIXME HOW IS VM3 JOINING??
+
+  - name: Print the output
+    debug:
+      msg: "{{ output }}"
+
+
+...

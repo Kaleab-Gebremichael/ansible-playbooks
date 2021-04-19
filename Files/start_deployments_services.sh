@@ -13,5 +13,5 @@ sleep 5
 kubectl apply -f ~/couchdb_service.yaml
 sleep 5
 kubectl apply -f ~/couchdb_deployment.yaml
-sleep 5
+sleep 15
 kubectl apply -f ~/consumer_deployment.yaml

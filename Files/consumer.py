@@ -46,7 +46,7 @@ for msg in consumer:
     # nor am I showing any code to connect to a backend database sink to
     # dump the incoming data. You will have to do that for the assignment.
 
-    output = {'timestamp': time.time(), 'contents of top': msg}
+    output = {'timestamp': time.time(), 'contents of top': msg.value.decode(encoding="ascii")}
     db.save(output)
     print (str(msg.value, 'ascii'))
 

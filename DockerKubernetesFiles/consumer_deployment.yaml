@@ -19,7 +19,7 @@ spec:                     # This is the specification where we can even put the 
                                              # from all our workers
         imagePullPolicy: Always  # This forces the node to pull the image
         command: ["python3"]
-        args: ["consumer.py"]  # arguments to run. I am running this for 1000
+        args: ["/consumer.py"]  # arguments to run. I am running this for 1000
                                                                                                        # iterations so that we have time to do an exec
                                                                                                        # and open a shell to the running pod
       restartPolicy: Never  # we ask Kubernetes not to restart

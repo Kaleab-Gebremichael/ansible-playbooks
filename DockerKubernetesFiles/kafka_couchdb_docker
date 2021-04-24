@@ -4,9 +4,9 @@ FROM ubuntu:latest
 RUN apt-get -y update && apt-get install -y net-tools python3 gcc default-jre wget
 RUN apt-get install -y python3-dev python3-pip
 RUN python3 -m pip install --upgrade pip
-RUN wget https://mirror.jframeworks.com/apache/kafka/2.7.0/kafka_2.13-2.7.0.tgz -P ~
-RUN sudo mkdir Kafka
-RUN sudo tar -xvzf ~/kafka_2.13-2.7.0.tgz -C Kafka/
+RUN wget https://mirrors.ocf.berkeley.edu/apache/kafka/2.7.0/kafka_2.13-2.7.0.tgz -P ~
+RUN mkdir Kafka
+RUN tar -xvzf ~/kafka_2.13-2.7.0.tgz -C Kafka/
 
 
 COPY server2.properties /

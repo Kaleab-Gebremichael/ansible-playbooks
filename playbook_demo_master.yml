@@ -20,17 +20,17 @@
 # - name: "Create cloud vms"
 #   import_playbook: tasks/create_cloud_vms.yml
 
-- name: "Install docker"
-  import_playbook: tasks/install_docker.yml
+#- name: "Install docker"
+#  import_playbook: tasks/install_docker.yml
 
-- name: "Enable ufw ports"
-  import_playbook: tasks/enable_ufw_ports.yml
+#- name: "Enable ufw ports"
+#  import_playbook: tasks/enable_ufw_ports.yml
 
-- name: "Start cluster"
-  import_playbook: tasks/start_kubernetes_cluster.yml
+# - name: "Start cluster"
+#   import_playbook: tasks/start_kubernetes_cluster.yml
 
-- name: "Taint master and compile docker files"
-  import_playbook: tasks/taint_master_compile_dockerfiles.yml
+# - name: "Taint master and compile docker files"
+#   import_playbook: tasks/taint_master_compile_dockerfiles.yml
 
 - name: "Join cluster from VM3"
   import_playbook: tasks/join_cluster_vm3.yml
@@ -40,6 +40,10 @@
 
 - name: "Start deployments and services"
   import_playbook: tasks/start_deployments_services.yml
+
+# - name: "Stop deployments and services"
+#   import_playbook: tasks/stop_deployments_services.yml
+
 # - name: "Download Kafka"
 #   import_playbook: tasks/download_kafka.yml
 #

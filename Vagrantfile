@@ -124,6 +124,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "DockerKubernetesFiles/kafka_couchdb_docker", destination: "~/.ansible/kafka_couchdb_docker"
   config.vm.provision "file", source: "DockerKubernetesFiles/zookeeper_deployment.yaml", destination: "~/.ansible/zookeeper_deployment.yaml"
   config.vm.provision "file", source: "DockerKubernetesFiles/zookeeper_service.yaml", destination: "~/.ansible/zookeeper_service.yaml"
+  config.vm.provision "file", source: "Files/kubernetes_dir.sh", destination: "~/.ansible/kubernetes_dir.sh"
 
   # We now use the Ansible provisioner
   #

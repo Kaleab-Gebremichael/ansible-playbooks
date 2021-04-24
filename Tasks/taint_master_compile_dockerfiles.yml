@@ -8,49 +8,74 @@
   tasks:
 
   - name: Copy shell file
-    copy: src=~/.ansible/docker_kubernetes_commands.sh dest=~/docker_kubernetes_commands.sh
+    copy: src=~/.ansible/docker_kubernetes_commands.sh dest=/home/cc/docker_kubernetes_commands.sh
     become: true
 
   - name: Copy docker file1
-    copy: src=~/.ansible/consumer_docker dest=~/consumer_docker
+    copy: src=~/.ansible/consumer_docker dest=/home/cc/consumer_docker
     become: true
 
   - name: Copy docker file2
-    copy: src=~/.ansible/kafka_couchdb_docker dest=~/kafka_couchdb_docker
+    copy: src=~/.ansible/kafka_couchdb_docker dest=/home/cc/kafka_couchdb_docker
     become: true
 
   - name: Copy docker file3
-    copy: src=~/.ansible/just_couchdb_docker dest=~/just_couchdb_docker
+    copy: src=~/.ansible/just_couchdb_docker dest=/home/cc/just_couchdb_docker
     become: true
 
   - name: Copy server2.properties
-    copy: src=~/.ansible/server2.properties dest=~/server2.properties
+    copy: src=~/.ansible/server2.properties dest=/home/cc/server2.properties
     become: true
 
   - name: Copy server3.properties
-    copy: src=~/.ansible/server3.properties dest=~/server3.properties
+    copy: src=~/.ansible/server3.properties dest=/home/cc/server3.properties
     become: true
 
   - name: Copy zookeeper.properties
-    copy: src=~/.ansible/zookeeper.properties dest=~/zookeeper.properties
+    copy: src=~/.ansible/zookeeper.properties dest=/home/cc/zookeeper.properties
     become: true
 
   - name: Copy consumer.py
-    copy: src=~/.ansible/consumer.py dest=~/consumer.py
+    copy: src=~/.ansible/consumer.py dest=/home/cc/consumer.py
     become: true
 
   - name: Copy local.ini
-    copy: src=~/.ansible/local.ini dest=~/local.ini
+    copy: src=~/.ansible/local.ini dest=/home/cc/local.ini
     become: true
 
-  - name: Run non-interactive shell command to start cluster and tainting
-    command: sh ~/docker_kubernetes_commands.sh
-    become: true
-    register: output
+  - name: taint master
+    command: kubectl taint nodes kubemaster node-role.kubernetes.io/master:NoSchedule-
 
-  - name: Print the output
-    debug:
-      msg: "{{ output }}"
+  - name: flannel
+    command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+  
+  - name: run docker
+    command: docker run -d -p 5000:5000 --restart=always --name registry registry:2
+    become: true
+  
+  - name: build docker images
+    command: docker build -f /home/cc/consumer_docker -t my-consumer /home/cc/
+    become: true
+
+  - name: build docker kafka
+    command: docker build -f /home/cc/kafka_couchdb_docker -t my-kafka-couchdb /home/cc/
+    become: true
+
+  - name: tag docker images
+    command: docker tag my-consumer:latest 129.114.25.102:5000/my-consumer
+    become: true  
+
+  - name: tag docker images 2
+    command: docker tag my-kafka-couchdb:latest 129.114.25.102:5000/my-kafka-couchdb
+    become: true
+
+  - name: push docker 1
+    command: docker push 129.114.25.102:5000/my-consumer
+    become: true
+
+  - name: push docker 2
+    command: docker push 129.114.25.102:5000/my-kafka-couchdb
+    become: true
 
 
 ...

@@ -2,19 +2,34 @@
 
 - hosts: VM2
   remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  gather_facts: true
   collections:   # this is new starting with Ansible 2.9 (akin to importing package)
     - openstack.cloud
 
   tasks:
 
   - name: Start kubeadm cluster
-    command: sudo kubeadm init --node-name kubemaster -pod-network-cidr=10.244.0.0/16
+    command: kubeadm init --node-name kubemaster --pod-network-cidr=10.244.0.0/16
+    become: true
 
-    ### FIXME HOW IS VM3 JOINING??
+  - name: make directory
+    command: mkdir -p ~/.kube
 
-  - name: Print the output
-    debug:
-      msg: "{{ output }}"
+  - name: Setup kubeconfig for vagrant user
+    command: "{{ item }}"
+    with_items:
+     - mkdir -p /home/cc/.kube
+     - cp -i /etc/kubernetes/admin.conf /home/cc/.kube/config
+     - chown cc:cc /home/cc/.kube/config
+    become: true
+  
+  - name: Generate join command
+    command: kubeadm token create --print-join-command
+    register: join_command
+
+  - name: Copy join command to local file
+    local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join-command"
+    become: true
 
 
 ...

@@ -1,0 +1,18 @@
+---
+
+- hosts: VM3
+  remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  gather_facts: true
+  become: true
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
+
+  tasks:
+  
+  - name: Copy the join command to server location
+    copy: src=join-command dest=/tmp/join-command.sh mode=0777
+
+  - name: Join the node to cluster
+    command: sh /tmp/join-command.sh
+
+...

@@ -1,0 +1,37 @@
+---
+
+- hosts: VM2
+  remote_user:  cc   # change the user to whatever is the user on the cloud VM
+  collections:   # this is new starting with Ansible 2.9 (akin to importing package)
+    - openstack.cloud
+
+  tasks:
+
+  - name: stop kafka1
+    command: kubectl delete -f /home/cc/kafka_broker1_service.yaml
+
+  - name: stop kafka1 deployment
+    command: kubectl delete -f /home/cc/kafka_broker1_deployment.yaml
+
+  - name: stop kafka0
+    command: kubectl delete -f /home/cc/kafka_broker0_service.yaml
+
+  - name: stop kafka0 deployment
+    command: kubectl delete -f /home/cc/kafka_broker0_deployment.yaml
+
+  - name: stop zookeeper
+    command: kubectl delete -f /home/cc/zookeeper_service.yaml
+
+  - name: stop zookeeper2
+    command: kubectl delete -f /home/cc/zookeeper_deployment.yaml    
+
+  - name: stop couchdbservice
+    command: kubectl delete -f /home/cc/couchdb_service.yaml
+
+  - name: stop couchdb deploy
+    command: kubectl delete -f /home/cc/couchdb_deployment.yaml
+
+  - name: stop consumer
+    command: kubectl delete -f /home/cc/consumer_deployment.yaml
+    
+...

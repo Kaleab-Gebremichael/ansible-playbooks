@@ -20,6 +20,4 @@
   - name: Print the output
     debug:
       msg: "{{ output }}"
-
-
 ...

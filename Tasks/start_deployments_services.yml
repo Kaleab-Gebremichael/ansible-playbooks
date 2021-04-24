@@ -6,13 +6,72 @@
     - openstack.cloud
 
   tasks:
+ 
+  - name: start zookeeper
+    command: kubectl apply -f /home/cc/zookeeper_service.yaml
 
-  - name: Run shell command to start deployments and services
-    command: sh ~/start_deployments_services.sh
-    become: true
-    register: output
+  - name: siesta1
+    command: /bin/sleep 5
+    async: 6
+    poll: 2
 
-  - name: Print the output
-    debug:
-      msg: "{{ output }}"
+  - name: start zookeeper2
+    command: kubectl apply -f /home/cc/zookeeper_deployment.yaml    
+
+  - name: siesta2
+    command: /bin/sleep 5
+    async: 6
+    poll: 2
+
+  - name: start kafka0
+    command: kubectl apply -f /home/cc/kafka_broker0_service.yaml
+
+  - name: siesta3
+    command: /bin/sleep 5
+    async: 6
+    poll: 2
+
+  - name: start kafka0 deployment
+    command: kubectl apply -f /home/cc/kafka_broker0_deployment.yaml
+
+  - name: siesta4
+    command: /bin/sleep 5
+    async: 6
+    poll: 2
+
+  - name: start kafka1
+    command: kubectl apply -f /home/cc/kafka_broker1_service.yaml
+  
+  - name: siesta5
+    command: /bin/sleep 5
+    async: 6
+    poll: 2
+
+  - name: start kafka1 deployment
+    command: kubectl apply -f /home/cc/kafka_broker1_deployment.yaml
+  
+  - name: siesta6
+    command: /bin/sleep 5
+    async: 6
+    poll: 2
+
+  - name: start couchdbservice
+    command: kubectl apply -f /home/cc/couchdb_service.yaml
+  
+  - name: siesta7
+    command: /bin/sleep 5
+    async: 6
+    poll: 2
+
+  - name: start couchdb deploy
+    command: kubectl apply -f /home/cc/couchdb_deployment.yaml
+
+  - name: siesta1
+    command: /bin/sleep 25
+    async: 30
+    poll: 10
+
+  - name: start consumer
+    command: kubectl apply -f /home/cc/consumer_deployment.yaml
+
 ...

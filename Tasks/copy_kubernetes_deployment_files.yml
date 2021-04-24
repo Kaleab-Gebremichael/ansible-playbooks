@@ -8,43 +8,43 @@
   tasks:
 
   - name: Copy docker file1
-    copy: src=~/.ansible/zookeeper_service.yaml dest=~/zookeeper_service.yaml
+    copy: src=~/.ansible/zookeeper_service.yaml dest=/home/cc/zookeeper_service.yaml
     become: true
 
   - name: Copy docker file2
-    copy: src=~/.ansible/zookeeper_deployment.yaml dest=~/zookeeper_deployment.yaml
+    copy: src=~/.ansible/zookeeper_deployment.yaml dest=/home/cc/zookeeper_deployment.yaml
     become: true
 
   - name: Copy shell file3
-    copy: src=~/.ansible/kafka_broker0_service.yaml dest=~/kafka_broker0_service.yaml
+    copy: src=~/.ansible/kafka_broker0_service.yaml dest=/home/cc/kafka_broker0_service.yaml
     become: true
 
   - name: Copy shell file4
-    copy: src=~/.ansible/kafka_broker0_deployment.yaml dest=~/kafka_broker0_deployment.yaml
+    copy: src=~/.ansible/kafka_broker0_deployment.yaml dest=/home/cc/kafka_broker0_deployment.yaml
     become: true
 
   - name: Copy shell file5
-    copy: src=~/.ansible/kafka_broker1_service.yaml dest=~/kafka_broker1_service.yaml
+    copy: src=~/.ansible/kafka_broker1_service.yaml dest=/home/cc/kafka_broker1_service.yaml
     become: true
 
   - name: Copy shell file6
-    copy: src=~/.ansible/kafka_broker1_deployment.yaml dest=~/kafka_broker1_deployment.yaml
+    copy: src=~/.ansible/kafka_broker1_deployment.yaml dest=/home/cc/kafka_broker1_deployment.yaml
     become: true
 
   - name: Copy shell file7
-    copy: src=~/.ansible/couchdb_service.yaml dest=~/couchdb_service.yaml
+    copy: src=~/.ansible/couchdb_service.yaml dest=/home/cc/couchdb_service.yaml
     become: true
 
   - name: Copy shell file8
-    copy: src=~/.ansible/couchdb_deployment.yaml dest=~/couchdb_deployment.yaml
+    copy: src=~/.ansible/couchdb_deployment.yaml dest=/home/cc/couchdb_deployment.yaml
     become: true
 
   - name: Copy shell file9
-    copy: src=~/.ansible/consumer_deployment.yaml dest=~/consumer_deployment.yaml
+    copy: src=~/.ansible/consumer_deployment.yaml dest=/home/cc/consumer_deployment.yaml
     become: true
 
   - name: Copy non-interactive shell for deploying services
-    copy: src=~/.ansible/start_deployments_services.sh dest=~/start_deployments_services.sh
+    copy: src=~/.ansible/start_deployments_services.sh dest=/home/cc/start_deployments_services.sh
     become: true
 
 

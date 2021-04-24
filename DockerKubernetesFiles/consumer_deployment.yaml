@@ -23,3 +23,4 @@ spec:                     # This is the specification where we can even put the 
                                                                                                        # iterations so that we have time to do an exec
                                                                                                        # and open a shell to the running pod
       restartPolicy: Never  # we ask Kubernetes not to restart
+ 

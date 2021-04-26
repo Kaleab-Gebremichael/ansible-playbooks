@@ -1,7 +1,6 @@
 # ansible-playbooks Assignment 3 Full Documentation
 
-This program uses the included Vagrantfile to spawn an local VM. 
-This local VM will automatically run a variety of ansible playbooks from a master playbook to spawn VM2 and VM3 in chameleon cloud. 
+This program uses the included Vagrantfile to spawn a local VM which will then run a variety of ansible playbooks from a master playbook to spawn VM2 and VM3 in chameleon cloud. 
 The local VM will run the producer.py code, and VM2 will run consumer.py, which dumps the received contents into couchdb.
 Zookeeper, Kafka, CouchDB and consumer.py all run in docker containers and are managed via Kubernetes. 
 The data is viewable in the couchdb web console. 

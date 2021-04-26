@@ -61,28 +61,28 @@ tasks/delete_cloud_vms.yaml
  - deletes the two cloud vm instances
  
 # Additional Files: 
-Clouds.yml file: helper file which is used by OpenStack tools as a source of configuration on how to connect to a cloud (in creation of vm2 and vm3)
-Id_rsa: token to create/ssh into our vms
-MyInventory
+- Clouds.yml file: helper file which is used by OpenStack tools as a source of configuration on how to connect to a cloud (in creation of vm2 and vm3)
+- Id_rsa: token to create/ssh into our vms
+- MyInventory
 
 # Docker Files: 
-consumer_deployment.yaml
-consumer_docker
-couchdb_deployment.yaml
-couchdb_service.yaml
-just_couchdb_docker
-kafka_broker0_deployment.yaml
-kafka_broker0_service.yaml
-kafka_broker1_deployment.yaml
-kafka_broker1_service.yaml
-kafka_couchdb_docker
-zookeeper_deployment.yaml
-zookeeper_service.yaml
-kubernetes_dir.sh
+- consumer_deployment.yaml
+- consumer_docker
+- couchdb_deployment.yaml
+- couchdb_service.yaml
+- just_couchdb_docker
+- kafka_broker0_deployment.yaml
+- kafka_broker0_service.yaml
+- kafka_broker1_deployment.yaml
+- kafka_broker1_service.yaml
+- kafka_couchdb_docker
+- zookeeper_deployment.yaml
+- zookeeper_service.yaml
+- kubernetes_dir.sh
 
 # Summary of work breakdown: 
 
-Milestone 1: Kaleab
-Milestone 2: Kaleab
-Milestone 3: Maddie and Kaleab
-Documentation/Submissions: Maddie
+- Milestone 1: Kaleab
+- Milestone 2: Kaleab
+- Milestone 3: Maddie and Kaleab
+- Documentation/Submissions: Maddie

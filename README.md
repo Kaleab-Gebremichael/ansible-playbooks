@@ -28,14 +28,14 @@ Runs playbook_demo_master
 # Playbook_demo_master.yaml runs the following: 
 
 tasks/create_cloud_vms.yaml
-Creates vm2 and vm3 on chameleon cloud with the same IP addresses and required security groups
+- Creates vm2 and vm3 on chameleon cloud with the same IP addresses and required security groups
 
 tasks/install_docker.yaml
-runs the shell file: install_docker_kubernetes.sh on both chameleon VMs
+- runs the shell file: install_docker_kubernetes.sh on both chameleon VMs
 - downloads docker, downloads kubernetes, and disables swap for kubernetes
 
 tasks/enable_ufw_ports.yaml
-Allows the following ports on both Chameleon VMs:
+- Allows the following ports on both Chameleon VMs:
 - 9092, 2181, 5984, 2379:2380/tcp,6443/tcp,10250:10252/tcp, 8285/udp, 8472/udp, 5000/tcp, 30000:30004/tcp, 30005/tcp, 30006/tcp
 
 tasks/start_kubernetes_cluster.yaml
